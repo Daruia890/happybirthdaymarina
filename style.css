@@ -1,0 +1,310 @@
+/* === Общие стили === */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #f0f0f0 url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #4B0082;
+  text-align: center;
+}
+
+.card {
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 900px;
+  width: 95%;
+  border-radius: 20px;
+}
+
+/* === Заголовок === */
+h1 {
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.h1-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s ease forwards;
+  color: #4B0082;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.h1-line.line2 {
+  animation-delay: 0.3s;
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+.emoji-inline {
+  display: inline;
+  font-size: 2.2rem;
+  margin-left: 10px;
+  animation: popIn 0.6s ease-out forwards;
+  vertical-align: middle;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* === Подарок === */
+.gift-container {
+  position: relative;
+  display: inline-block;
+  margin: 0px 0 10px 0;
+}
+
+#gift {
+  width: 250px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  margin-top: 0px;
+}
+
+#gift:hover {
+  transform: scale(1.05) rotate(-5deg);
+}
+
+#gift.shaking {
+  animation: shake 0.6s ease-in-out;
+}
+
+#gift.opened {
+  display: none;
+}
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* === Подпись (кнопка под подарком) === */
+.click-text {
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: rgba(230, 40, 118, 0.9);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: max-content;
+  max-width: 180px;
+  white-space: pre-line;
+  line-height: 1.3;
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* === Поздравление === */
+.congrats-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 10px auto 0;
+  padding: 0 5px;
+}
+
+.congrats-text {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 600px;
+  min-width: 250px;
+}
+
+.congrats-text p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: #4B0082;
+  font-weight: 600;
+  text-align: left;
+}
+
+.signature {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #4B0082;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.congrats-photo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.congrats-photo img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* === Скрытый блок === */
+.hidden {
+  display: none !important;
+}
+
+/* === Адаптив (планшет) === */
+@media screen and (max-width: 768px) {
+  .h1-line {
+    font-size: 1.6rem;
+  }
+
+  .h1-line.line2 {
+    font-size: 1.3rem;
+  }
+
+  .emoji-inline {
+    font-size: 1.6rem;
+    margin-left: 6px;
+  }
+
+  .congrats-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .congrats-text p {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .signature {
+    font-size: 0.9rem;
+    margin-top: 10px; /* Подняли "Твоя команда" выше */
+  }
+
+  .congrats-photo {
+    margin-top: 20px; /* Опустили фото чуть ниже */
+  }
+
+  #gift {
+    width: 180px;
+  }
+
+  .click-text {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+    bottom: -65px;
+    max-width: 160px;
+    line-height: 1.3;
+  }
+}
+
+/* === Адаптив (телефоны) === */
+@media screen and (max-width: 400px) {
+  .h1-line {
+    font-size: 1.4rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px; /* расстояние между текстом и emoji */
+  }
+
+  .h1-line.line2 {
+    font-size: 1.2rem;
+    margin-top: -5px;
+  }
+
+  .emoji-inline {
+    font-size: 1.3rem;
+    margin-left: 0; /* убрали смещение влево */
+  }
+
+  .congrats-text p {
+    font-size: 0.85rem;
+    line-height: 1.25;
+    padding: 0 10px;
+  }
+
+  .signature {
+    font-size: 0.85rem;
+    margin-top: 8px; /* Подняли ещё выше */
+  }
+
+  .congrats-photo {
+    margin-top: 25px; /* Опустили ещё ниже */
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .click-text {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    bottom: -65px;
+  }
+
+  #gift {
+    width: 250px;
+  }
+}
+
+@keyframes slideFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  animation: slideFadeDown 1.2s ease forwards;
+}
+

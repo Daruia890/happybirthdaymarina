@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вітаємо, з Днем народження!</title>
+
+  
+  <!-- ✅ Open Graph (Facebook, Telegram) -->
+  <meta property="og:title" content="🎁 Вітаємо з Днем народження! Натисни на зображення — тебе чекає привітання🎈" />
+  <meta property="og:image" content="https://dariatkachenko-prog.github.io/HappyBirthdayMarina/preview.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://dariatkachenko-prog.github.io/HappyBirthdayMarina/" />
+  <meta property="og:type" content="website" />
+  
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🎁Вітаємо з Днем народження! Натисни на зображення — тебе чекає привітання🎈" />
+  <meta name="twitter:image" content="https://dariatkachenko-prog.github.io/vitannya/preview.jpg" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="card">
+    <h1>
+      <span class="h1-line line1">
+        МАРИНА <span class="emoji-inline">🎉</span>
+      </span>
+      <span class="h1-line line2">ВІТАЄМО ТЕБЕ З ДНЕМ НАРОДЖЕННЯ!</span>
+    </h1>
+
+    <div class="gift-container">
+      <img src="gift.png" alt="Подарунок" id="gift" />
+      <span class="click-text">Натисни 👆<br>на подарунок</span>
+    </div>
+
+    <div class="congrats-wrapper hidden">
+      <div class="congrats-text">
+        <div class="congrats-text-inner">
+          <p>
+            <span class="line">Бажаємо, щоб дні були легкими,</span><br />
+            <span class="line">рішення — вдалими, а життя — зі смаком.</span><br />
+            <span class="line">Нехай кожна несподіванка буде бонусом,</span><br />
+            <span class="line">а в кожному дні — трошки магії. 💫</span><br /><br />
+            <em class="signature">Твоя команда АФ “Наша Бухгалтерія” </em>
+          </p>
+        </div>
+      </div>
+      <div class="congrats-photo">
+        <img src="congrats-image.png" alt="Привітальне фото" />
+      </div>
+    </div>
+  </div>
+
+  <audio id="bg-music" src="music.mp3" loop></audio>
+  <audio id="open-sound" src="open.mp3"></audio>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const gift = document.getElementById("gift");
+      const bgMusic = document.getElementById("bg-music");
+      const openSound = document.getElementById("open-sound");
+      const clickText = document.querySelector(".click-text");
+      const congratsWrapper = document.querySelector(".congrats-wrapper");
+
+      gift.addEventListener("click", () => {
+        openSound.play();
+        gift.classList.add("shaking");
+
+        setTimeout(() => {
+          gift.classList.remove("shaking");
+          gift.classList.add("opened");
+
+          if (clickText) clickText.remove();
+
+          // ✨ Показываем с анимацией
+          congratsWrapper.classList.remove("hidden");
+          congratsWrapper.classList.add("fade-in");
+
+          bgMusic.play();
+        }, 800);
+      });
+    });
+  </script>
+</body>
+</html>
